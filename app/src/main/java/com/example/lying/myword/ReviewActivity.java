@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.lying.myword.util.CreateModuleTxtUtil;
+import com.example.lying.myword.util.DisturbOptionsUtil;
 import com.example.lying.myword.util.File_read_write;
 import com.example.lying.myword.util.countTimeUtil;
 
@@ -68,6 +69,10 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     //控件(上一个、下一个)
     TextView ReviewPrevious,ReviewNext;
 
+    //获取两个多余选项的对象
+    DisturbOptionsUtil disturbOptionsUtil ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +92,9 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         //初始化数据库对象
         mydatabasehelper=new MyDBHelper(this);
         mydatabase=mydatabasehelper.getWritableDatabase();
+
+        //获取干扰选项对象
+        disturbOptionsUtil = new DisturbOptionsUtil(this);
 
         //传过来的数据(有数据肯定有表)
         ModuleName = getIntent().getStringExtra("ModuleName");
@@ -176,10 +184,16 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         ReviewPhoneticSymbol.setText(phoneticSymbolText);
         if(num == 1){
             AOption.setText(chineseMeanText);
+            BOption.setText(disturbOptionsUtil.getDisturbOption(chineseMeanText)[0]);
+            COption.setText(disturbOptionsUtil.getDisturbOption(chineseMeanText)[1]);
         }else if(num == 2){
             BOption.setText(chineseMeanText);
+            AOption.setText(disturbOptionsUtil.getDisturbOption(chineseMeanText)[0]);
+            COption.setText(disturbOptionsUtil.getDisturbOption(chineseMeanText)[1]);
         }else if(num == 3){
             COption.setText(chineseMeanText);
+            AOption.setText(disturbOptionsUtil.getDisturbOption(chineseMeanText)[0]);
+            BOption.setText(disturbOptionsUtil.getDisturbOption(chineseMeanText)[1]);
         }
     }
 
