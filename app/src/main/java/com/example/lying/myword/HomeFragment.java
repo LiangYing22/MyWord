@@ -205,33 +205,40 @@ public class HomeFragment extends Fragment {
                     break;
                 case R.id.home_UnlearnedWordsTop://未学习概况
                 case R.id.home_UnlearnedWordsBelow://未学习概况
-                    File_read_write fileReadWrite1 = new File_read_write(context,currentModule+".txt");
-                    Survey survey1 = fileReadWrite1.getSurvey();
-                    List<Word> unlearning = survey1.getUnLearning();
-                    //发送事件
-                    EventBus.getDefault().postSticky(new StudySurveyEvent(currentModule,unlearning,1));
-                    Intent unStudyIntent = new Intent(context,StudySurveyOfSpecificActivity.class);
-                    startActivity(unStudyIntent);
+                    if(currentModule != null && !currentModule.equals("")){
+                        File_read_write fileReadWrite1 = new File_read_write(context,currentModule+".txt");
+                        Survey survey1 = fileReadWrite1.getSurvey();
+                        List<Word> unlearning = survey1.getUnLearning();
+                        //发送事件
+                        EventBus.getDefault().postSticky(new StudySurveyEvent(currentModule,unlearning,1));
+                        Intent unStudyIntent = new Intent(context,StudySurveyOfSpecificActivity.class);
+                        startActivity(unStudyIntent);
+                    }
+
                     break;
                 case R.id.home_ReviewWordsTop://需复习
                 case R.id.home_ReviewWordsBelow://需复习
-                    File_read_write fileReadWrite2 = new File_read_write(context,currentModule+".txt");
-                    Survey survey2 = fileReadWrite2.getSurvey();
-                    List<Word> reviewing = survey2.getReviewing();
-                    //发送事件
-                    EventBus.getDefault().postSticky(new StudySurveyEvent(currentModule,reviewing,2));
-                    Intent needReviewIntent = new Intent(context,StudySurveyOfSpecificActivity.class);
-                    startActivity(needReviewIntent);
+                    if(currentModule != null && !currentModule.equals("")){
+                        File_read_write fileReadWrite2 = new File_read_write(context,currentModule+".txt");
+                        Survey survey2 = fileReadWrite2.getSurvey();
+                        List<Word> reviewing = survey2.getReviewing();
+                        //发送事件
+                        EventBus.getDefault().postSticky(new StudySurveyEvent(currentModule,reviewing,2));
+                        Intent needReviewIntent = new Intent(context,StudySurveyOfSpecificActivity.class);
+                        startActivity(needReviewIntent);
+                    }
                     break;
                 case R.id.home_MasterWordsTop://已掌握
                 case R.id.home_MasterWordsBelow://已掌握
-                    File_read_write fileReadWrite3 = new File_read_write(context,currentModule+".txt");
-                    Survey survey3 = fileReadWrite3.getSurvey();
-                    List<Word> mastering = survey3.getMaster();
-                    //发送事件
-                    EventBus.getDefault().postSticky(new StudySurveyEvent(currentModule,mastering,3));
-                    Intent masterIntent = new Intent(context,StudySurveyOfSpecificActivity.class);
-                    startActivity(masterIntent);
+                    if(currentModule != null && !currentModule.equals("")){
+                        File_read_write fileReadWrite3 = new File_read_write(context,currentModule+".txt");
+                        Survey survey3 = fileReadWrite3.getSurvey();
+                        List<Word> mastering = survey3.getMaster();
+                        //发送事件
+                        EventBus.getDefault().postSticky(new StudySurveyEvent(currentModule,mastering,3));
+                        Intent masterIntent = new Intent(context,StudySurveyOfSpecificActivity.class);
+                        startActivity(masterIntent);
+                    }
                     break;
                 case R.id.home_StudyWords://学习单词
                     String ModuleName="";

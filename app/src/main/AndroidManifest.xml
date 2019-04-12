@@ -24,7 +24,8 @@
         <activity android:name=".StudyActivity" />
         <activity android:name=".ReviewActivity" />
         <activity android:name=".StudySurveyActivity" />
-        <activity android:name=".StudySurveyOfSpecificActivity"></activity>
+        <activity android:name=".StudySurveyOfSpecificActivity" />
+        <activity android:name=".TestWordsActivity"></activity>
     </application>
 
 </manifest>
