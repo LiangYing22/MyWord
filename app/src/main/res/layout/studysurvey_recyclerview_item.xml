@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/survey_module"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="模块学习概况"
+        android:gravity="center"
+        android:textColor="#c467f6"
+        android:padding="5dp"/>
+    <RelativeLayout
+        android:id="@+id/survey_unLearning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/survey_module"
+        android:layout_alignParentLeft="true">
+
+        <TextView
+            android:id="@+id/survey_unLearningTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="108"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/survey_unLearningBelow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未学习"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/survey_unLearningTop"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/survey_needReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/survey_module"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/survey_needReviewTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/survey_needReviewBelow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="需复习"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/survey_needReviewTop"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/survey_hadMast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/survey_module"
+        android:layout_alignParentRight="true">
+
+        <TextView
+            android:id="@+id/survey_hadMastTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="90"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/survey_hadMastBelow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已掌握"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/survey_hadMastTop"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#454545"
+        android:layout_below="@id/survey_hadMast"/>
+
+</RelativeLayout>

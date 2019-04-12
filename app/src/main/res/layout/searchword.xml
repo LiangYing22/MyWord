@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#aaffffff">
+
+    <LinearLayout
+        android:id="@+id/search_Top"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#ffffffff"
+        android:orientation="horizontal">
+
+        <AutoCompleteTextView
+            android:id="@+id/search_input"
+            android:completionThreshold="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:hint="请输入单词"/>
+
+        <ImageView
+            android:id="@+id/search_clearInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/deleteinput"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/search_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/search_Top"
+        android:gravity="center"
+        android:text="不认识单词？搜索看看吧！"
+        android:textSize="25sp"
+        android:textColor="#d20ea48f"/>
+
+    <RelativeLayout
+        android:id="@+id/search_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_Top"
+        android:layout_margin="25dp"
+        android:layout_weight="1"
+        android:background="#bbffffff"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/search_word"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"
+            android:textColor="#fb0b7e6e"
+            android:gravity="center"
+            android:text="hello"/>
+
+        <TextView
+            android:id="@+id/search_phoneticSymbol"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@+id/search_word"
+            android:gravity="center"
+            android:text="/helle/"/>
+
+        <TextView
+            android:id="@+id/search_chineseMean"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/search_word"
+            android:gravity="center"
+            android:text="你好！大家好！"/>
+
+        <TextView
+            android:id="@+id/search_addToNewWords"
+            android:layout_width="150dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/search_chineseMean"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:text="加入生词本"
+            android:background="#d20ea48f"
+            android:textColor="#ffffffff"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

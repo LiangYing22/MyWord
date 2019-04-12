@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#aaffffff">
+
+    <RelativeLayout
+        android:id="@+id/newWordRecyclerItemLeft"
+        android:layout_width="60dp"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/itemNewWordSound"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/sound"
+            android:layout_alignParentLeft="true"
+            android:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/itemNewWordIsSelect"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/unselect"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/newWordRecyclerItemLeft"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/view1"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/itemNewWordWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hello" />
+        <TextView
+            android:id="@+id/itemNewWordPhoneticSymbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/lklkgj/" />
+        <TextView
+            android:id="@+id/itemNewWordChineseMean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="你好，你好，你好，打招呼！" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#670755fb"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

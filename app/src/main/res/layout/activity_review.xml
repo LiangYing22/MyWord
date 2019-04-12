@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/ReviewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="模块复习"
+        android:textSize="25dp"
+        android:background="#74f6f7d4"/>
+
+    <RelativeLayout
+        android:id="@+id/ReviewWordMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ReviewTitle">
+
+        <TextView
+            android:id="@+id/ReviewWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="abandon"
+            android:layout_margin="30dp"
+            android:textColor="#fb0b7e6e"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/ReviewPhoneticSymbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ReviewWord"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center_vertical"
+            android:textSize="20dp"
+            android:text="/skljgsff/"/>
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ReviewWordMessage"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+        
+        <TextView
+            android:id="@+id/AOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A选项"
+            android:gravity="center"
+            android:layout_margin="15dp"
+            android:padding="15dp"
+            android:textSize="17dp"
+            android:background="#b7f6d5f6"/>
+        <TextView
+            android:id="@+id/BOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="B选项"
+            android:gravity="center"
+            android:layout_below="@id/AOption"
+            android:layout_margin="15dp"
+            android:padding="15dp"
+            android:textSize="17dp"
+            android:background="#b7f6d5f6"/>
+        <TextView
+            android:id="@+id/COption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="C选项"
+            android:gravity="center"
+            android:layout_below="@id/BOption"
+            android:layout_margin="15dp"
+            android:padding="15dp"
+            android:textSize="17dp"
+            android:background="#b7f6d5f6"/>
+        <TextView
+            android:id="@+id/DOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="我忘记了"
+            android:gravity="center"
+            android:layout_below="@id/COption"
+            android:layout_margin="15dp"
+            android:padding="15dp"
+            android:textSize="17dp"
+            android:background="#b7f6d5f6"/>
+        <TextView
+            android:id="@+id/ReviewPrevious"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上一个"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:layout_below="@id/DOption"
+            android:layout_margin="15dp"
+            android:textSize="17dp"/>
+        <TextView
+            android:id="@+id/ReviewNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下一个"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:layout_below="@id/DOption"
+            android:layout_margin="15dp"
+            android:textSize="17dp"/>
+        
+    </RelativeLayout>
+
+</RelativeLayout>

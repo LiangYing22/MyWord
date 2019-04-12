@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/WordSpelling"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:textColor="#000000"
+            android:gravity="left|center_vertical"
+            android:textSize="15dp"
+            android:text="heeheh"/>
+
+        <TextView
+            android:id="@+id/WordChineseMean"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:textColor="#76c76a"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:text="heheheh"/>
+
+        <TextView
+            android:id="@+id/AddToNewWords"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/addtonewwords"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#d9f3d8f4"/>
+
+</LinearLayout>

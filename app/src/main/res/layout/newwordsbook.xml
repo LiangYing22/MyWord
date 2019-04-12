@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#a0ffffff">
+
+    <RelativeLayout
+        android:id="@+id/editAndSearch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#ffffffff">
+
+        <TextView
+            android:id="@+id/newWordEdit"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:text="编辑"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/newWordSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="全选"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:visibility="gone"/>
+
+        <TextView
+        android:id="@+id/newWordsBookText"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="词汇生词本"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/newWordsCannel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="返回"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/newWordsInput"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/newWordSearch"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:text="搜索"
+            android:gravity="center"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/newWordDelete"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:text="删除"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/noNewWords"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editAndSearch"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="还没有生词，遇到不认识的单词可以添加到生词哦！"
+        android:visibility="gone"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/newWordRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editAndSearch"/>
+
+
+
+</RelativeLayout>

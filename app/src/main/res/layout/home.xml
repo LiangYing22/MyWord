@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/home_background">
+    <LinearLayout
+        android:id="@+id/home_WordsBookAndNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#80becbae"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/home_WordsBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00becbae"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="暂未选择词本"
+            android:textSize="50dp" />
+
+        <Button
+            android:id="@+id/home_WordsBookNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="#00becbae"
+            android:text="单词数：0" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="2">
+        <TextView
+            android:id="@+id/home_StudySurvey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#80a9e4e8"
+            android:gravity="center"
+            android:textSize="35dp"
+            android:layout_weight="1"
+            android:text="学  习  概  况"/>
+        <TextView
+            android:id="@+id/home_currentStudySurvey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#80a9e4e8"
+            android:textColor="#c467f6"
+            android:text="当前模块学习概况"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/home_UnlearnedWordsTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#80a9e4e8"
+                android:gravity="center"
+                android:text="00" />
+
+            <Button
+                android:id="@+id/home_ReviewWordsTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#80a9e4e8"
+                android:gravity="center"
+                android:text="00" />
+
+            <Button
+                android:id="@+id/home_MasterWordsTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#80a9e4e8"
+                android:gravity="center"
+                android:text="00" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/home_UnlearnedWordsBelow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#80a9e4e8"
+                android:gravity="center"
+                android:text="未学习" />
+
+            <Button
+                android:id="@+id/home_ReviewWordsBelow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#80a9e4e8"
+                android:gravity="center"
+                android:text="需复习" />
+
+            <Button
+                android:id="@+id/home_MasterWordsBelow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#80a9e4e8"
+                android:gravity="center"
+                android:text="已掌握" />
+        </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#8093d8c0"
+        android:layout_weight="2">
+
+        <Button
+            android:id="@+id/home_StudyWords"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#0093d8c0"
+            android:text="学习单词" />
+
+        <Button
+            android:id="@+id/home_ReviewWords"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#0093d8c0"
+            android:text="复习单词" />
+
+        <Button
+            android:id="@+id/home_TestWords"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#0093d8c0"
+            android:text="测试单词" />
+    </LinearLayout>
+
+</LinearLayout>
