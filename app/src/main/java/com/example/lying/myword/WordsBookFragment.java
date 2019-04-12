@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -53,6 +54,7 @@ public class WordsBookFragment extends Fragment {
     TextView selectWordsbookName;
     TextView selectWordsbookModuleNum;
     TextView selectWordsbookWrodsNum;
+    LinearLayout WordsBookBookAndNum;
 
     BaseAdapter mybaseadapter=null;
     //SharedPreferences对象
@@ -112,13 +114,15 @@ public class WordsBookFragment extends Fragment {
         selectWordsbookModuleNum = (TextView)WordsBookView.findViewById(R.id.selectWordsbookModuleNum) ;
         selectWordsbookWrodsNum = (TextView)WordsBookView.findViewById(R.id.selectWordsbookWrodsNum) ;
         WordsBookListView=(ListView)WordsBookView.findViewById(R.id.WordsBookListView);
+        WordsBookBookAndNum=(LinearLayout)WordsBookView.findViewById(R.id.WordsBookBookAndNum);
 
         //根据数据库数据初始化
         initDataFromDB();
         //点击事件
-        selectWordsbookName.setOnClickListener(new MyonClickListener());
-        selectWordsbookModuleNum.setOnClickListener(new MyonClickListener());
-        selectWordsbookWrodsNum.setOnClickListener(new MyonClickListener());
+//        WordsBookBookAndNum.setOnClickListener(new MyonClickListener());
+////        selectWordsbookName.setOnClickListener(new MyonClickListener());
+////        selectWordsbookModuleNum.setOnClickListener(new MyonClickListener());
+        WordsBookBookAndNum.setOnClickListener(new MyonClickListener());
 
         //自定义适配器
         mybaseadapter=new BaseAdapter() {
@@ -331,12 +335,14 @@ public class WordsBookFragment extends Fragment {
         @Override
         public void onClick(View view) {
             switch(view.getId()){
-                case R.id.selectWordsbookName :
-                case R.id.selectWordsbookModuleNum:
-                case R.id.selectWordsbookWrodsNum:
+//                case R.id.selectWordsbookName :
+//                case R.id.selectWordsbookModuleNum:
+//                case R.id.selectWordsbookWrodsNum:
+                case R.id.WordsBookBookAndNum:
                     Intent intent =new Intent(getActivity(),WordsModuleListActivity.class);
                     intent.putExtra("wordsbook",WordsBookName);
                     startActivity(intent);
+                    break;
             }
         }
     }
