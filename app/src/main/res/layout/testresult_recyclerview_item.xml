@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="38dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/TestResultRecyclerItemWordSpell"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="hello"/>
+    <TextView
+        android:id="@+id/TestResultRecyclerItemState"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="错误"/>
+    <TextView
+        android:id="@+id/TestResultRecyclerItemInput"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="helo"/>
+
+</LinearLayout>

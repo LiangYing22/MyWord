@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffffff">
 
     <TextView
         android:id="@+id/WordTestTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="模块测试"
+        android:text="选择模块测试"
         android:background="#a7f9f9d6"
         android:padding="15dp"
         android:textSize="18sp"/>
@@ -16,11 +17,61 @@
     <EditText
         android:id="@+id/WordTestEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@id/WordTestTitle"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/edit_bg"/>
+        android:padding="15dp"
+        android:gravity="center"
+        android:background="@drawable/edit_bg"
+        android:backgroundTint="#ffeaeaea"
+        android:layout_alignParentLeft="true"
+        android:layout_toRightOf="@id/WordTestConfirm" />
+
+    <TextView
+        android:id="@+id/WordTestConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:padding="13dp"
+        android:background="@drawable/edit_bg"
+        android:text="确定"
+        android:backgroundTint="#ffeaeaea"
+        android:layout_below="@id/WordTestTitle"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:id="@+id/WordTestChineseMean"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/WordTestEditText"
+        android:background="@drawable/edit_bg"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
+        android:text="你好！"/>
+
+    <TextView
+        android:id="@+id/WordTestSeeResults"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/WordTestNext"
+        android:background="@drawable/edit_bg"
+        android:gravity="center"
+        android:text="查看成绩" />
+
+    <TextView
+        android:id="@+id/WordTestNext"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/edit_bg"
+        android:gravity="center"
+        android:text="下一个" />
 
 </RelativeLayout>

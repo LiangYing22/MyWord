@@ -11,9 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 
@@ -63,7 +61,7 @@ public class SixLevelWordDecompose {
         //词库名
         bookname=WordsBookName;
 
-        InputStreamReader inputReader = new InputStreamReader( context.getResources().getAssets().open(TxtFileName),"Unicode" );
+        InputStreamReader inputReader = new InputStreamReader( context.getResources().getAssets().open("txt/"+TxtFileName),"Unicode" );
         BufferedReader bufReader = new BufferedReader(inputReader);
         String line="";//用于暂存读取的每行数据
         String Result[]=null;//用于保存每行拆分数据
@@ -75,7 +73,7 @@ public class SixLevelWordDecompose {
         int count_table_words=cursor_table_words.getCount();//单词表中的单词个数
         //循环导入数据库
         while ((line = bufReader.readLine()) != null) {
-            if(!"常用2000单词.txt".equals(TxtFileName) && line.contains("/")){
+            if(!"txt/常用2000单词.txt".equals("txt/"+TxtFileName) && line.contains("/")){
                 Result=line.split("/");
                 //Log.i("词本信息",Result[0] + " , " + Result[1] + " , " + Result[2]);//此处可导入数据库
                 ContentValues contentValues = new ContentValues();

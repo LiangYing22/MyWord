@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestResultActivity">
+
+    <TextView
+        android:id="@+id/TestResultTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="XX模块测试成绩"
+        android:gravity="center"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TestResultTotalTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="总数:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TestResultTitle"
+        android:background="#caf5f5d9"/>
+
+    <TextView
+        android:id="@+id/TestResultTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="100"
+        app:layout_constraintStart_toEndOf="@+id/TestResultTotalTip"
+        app:layout_constraintTop_toBottomOf="@+id/TestResultTitle"
+        android:background="#84f5f5d9" />
+
+    <TextView
+        android:id="@+id/TestResultRightTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="正确:"
+        app:layout_constraintStart_toEndOf="@+id/TestResultTotal"
+        app:layout_constraintTop_toBottomOf="@+id/TestResultTitle"
+        android:background="#caf5f5d9" />
+
+    <TextView
+        android:id="@+id/TestResultRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="800"
+        app:layout_constraintStart_toEndOf="@+id/TestResultRightTip"
+        app:layout_constraintTop_toBottomOf="@+id/TestResultTitle"
+        android:background="#84f5f5d9" />
+
+    <TextView
+        android:id="@+id/TestResultErrorTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="错误:"
+        android:gravity="center"
+        android:padding="10dp"
+        app:layout_constraintStart_toEndOf="@+id/TestResultRight"
+        app:layout_constraintTop_toBottomOf="@+id/TestResultTitle"
+        android:background="#caf5f5d9" />
+
+    <TextView
+        android:id="@+id/TestResultError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="100"
+        app:layout_constraintStart_toEndOf="@+id/TestResultErrorTip"
+        app:layout_constraintTop_toBottomOf="@+id/TestResultTitle"
+        android:background="#84f5f5d9" />
+
+    <TextView
+        android:id="@+id/TestResultNotTestTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="未测:"
+        app:layout_constraintStart_toEndOf="@+id/TestResultError"
+        app:layout_constraintTop_toBottomOf="@+id/TestResultTitle"
+        android:background="#caf5f5d9" />
+
+    <TextView
+        android:id="@+id/TestResultNotTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/TestResultNotTestTip"
+        app:layout_constraintTop_toBottomOf="@+id/TestResultTitle"
+        android:background="#84f5f5d9"/>
+
+    <LinearLayout
+        android:id="@+id/TestResultRecylerViewTip"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TestResultRight"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="正确单词"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="测试状态"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="你的输入"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/TestResultRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:background="@drawable/edit_bg"
+        app:layout_constraintTop_toBottomOf="@+id/TestResultRecylerViewTip"/>
+
+
+</android.support.constraint.ConstraintLayout>

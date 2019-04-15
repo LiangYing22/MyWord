@@ -12,6 +12,8 @@ public class Word {
     String wordPosition = "-2";//单词所在txt文件中的行号
     int option = -1;//在那个选项（主要用于复习单词中）
     String wordReviewPosition = "-2";//单词所在复习txt文件中的行号
+    int isTestRight = -1;//测试中，单词是否测试正确(0，不正确。1，正确。-1，未测试)
+    String myInputWordSpell = "";//测试中，用户输入的单词拼写。
 
     public Word(String wordSpell,String phoneticSymbol,String chineseMean){
         this.wordSpell = wordSpell;
@@ -69,6 +71,14 @@ public class Word {
         this.wordReviewPosition = wordReviewPosition;
     }
 
+    public void setIsTestRight(int isTestRight) {
+        this.isTestRight = isTestRight;
+    }
+
+    public void setMyInputWordSpell(String myInputWordSpell) {
+        this.myInputWordSpell = myInputWordSpell;
+    }
+
     public String getWordSpell() {
         return wordSpell;
     }
@@ -107,5 +117,13 @@ public class Word {
 
     public String getWordReviewPosition() {
         return wordReviewPosition;
+    }
+
+    public int getIsTestRight() {
+        return isTestRight;
+    }
+
+    public String getMyInputWordSpell() {
+        return myInputWordSpell;
     }
 }

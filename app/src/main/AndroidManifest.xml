@@ -25,7 +25,10 @@
         <activity android:name=".ReviewActivity" />
         <activity android:name=".StudySurveyActivity" />
         <activity android:name=".StudySurveyOfSpecificActivity" />
-        <activity android:name=".TestWordsActivity"></activity>
+        <activity
+            android:name=".TestWordsActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".TestResultActivity"></activity>
     </application>
 
 </manifest>

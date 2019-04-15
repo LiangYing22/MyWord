@@ -116,6 +116,8 @@ public class HomeFragment extends Fragment {
         home_StudyWords.setOnClickListener(new MyonClickListener());
         //跳转到复习单词
         home_ReviewWords.setOnClickListener(new MyonClickListener());
+        //跳转到单词测试
+        home_TestWords.setOnClickListener(new MyonClickListener());
         //跳转到学习概况
         home_StudySurvey.setOnClickListener(new MyonClickListener());
         //跳转到当前模块的学习概况
@@ -276,12 +278,12 @@ public class HomeFragment extends Fragment {
                     //查询学习计划表,获取当前需要复习的模块名
                     String currentReviewModuleName = "";
                     //先查询 学习状态为0(正在学习)且复习状态为0(正在复习)的模块
-                    Cursor cursor_studytable00 = mydatabase.rawQuery("select LearningModule from "+MyDBHelper.Table_LearningPlan_NANE+
-                                                                " where LearningState=? and ReviewingState=? limit 1",new String[]{"0","0"});
-                    if(cursor_studytable00.getCount() == 1){
-                        while(cursor_studytable00.moveToNext()){
-                            currentReviewModuleName = cursor_studytable00.getString(0);
-                        }
+                        Cursor cursor_studytable00 = mydatabase.rawQuery("select LearningModule from "+MyDBHelper.Table_LearningPlan_NANE+
+                                                                    " where LearningState=? and ReviewingState=? limit 1",new String[]{"0","0"});
+                        if(cursor_studytable00.getCount() == 1){
+                            while(cursor_studytable00.moveToNext()){
+                                currentReviewModuleName = cursor_studytable00.getString(0);
+                            }
                         //先删除文件（查找到了就删除）
                         deleteFile(currentReviewModuleName,2);
                         //重新创建文件
@@ -349,6 +351,10 @@ public class HomeFragment extends Fragment {
                     //点击“学习概况”查看所有学习txt文件的学习概况
                     Intent intent3 = new Intent(getActivity(),StudySurveyActivity.class);
                     startActivity(intent3);
+                    break;
+                case R.id.home_TestWords://单词测试
+                    Intent intent4 = new Intent(getActivity(),TestWordsActivity.class);
+                    startActivity(intent4);
                     break;
             }
         }

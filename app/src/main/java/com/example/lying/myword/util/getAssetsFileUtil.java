@@ -15,10 +15,12 @@ public class getAssetsFileUtil {
         List<String> list=new ArrayList<String>();
         try {
             String[] Files = context.getResources().getAssets().list("");
-            for(String s:Files){
+            String[] txtFiles = context.getResources().getAssets().list("txt");
+            for(String s:txtFiles){
                 if(s.contains(".txt")){
                     list.add(s);
                     Log.i("SixLevelWordDecompose","正确文件:"+s+"正确文件个数:"+list.size());
+                    Log.i("SixLevelWordDecompose","路劲:"+context.getFilesDir().getPath() + "/");
                 }
             }
             return list;

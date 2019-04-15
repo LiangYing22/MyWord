@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/edit_bg">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="已学模块"
+        android:gravity="center"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#bb000000"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/PopWindowModuleRecycler"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
