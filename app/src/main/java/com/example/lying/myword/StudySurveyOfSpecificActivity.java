@@ -6,6 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -22,15 +25,26 @@ public class StudySurveyOfSpecificActivity extends AppCompatActivity {
     private int Type = 0;
     TextView SpecificModuleName;
     RecyclerView SpecificRecyclerView;
+    ImageView moduleWordBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_module_words_recler_view);
 
         //绑定控件
         SpecificModuleName = (TextView)findViewById(R.id.specificModuleName);
         SpecificRecyclerView = (RecyclerView)findViewById(R.id.ModuleWordsRecyclerView);
+        moduleWordBack = (ImageView)findViewById(R.id.moduleWordBack);
+
+        //返回
+        moduleWordBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         //注册
         EventBus.getDefault().register(this);

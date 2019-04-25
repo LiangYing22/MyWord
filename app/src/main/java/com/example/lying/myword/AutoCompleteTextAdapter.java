@@ -111,6 +111,7 @@ public class AutoCompleteTextAdapter extends BaseAdapter implements Filterable {
             filterList = (List<String>)filterResults.values;
             if (filterResults.count > 0) {
                 //重绘当前可见区域
+                Log.i("AutoCompleteTextAdapter","数目："+filterResults.count);
                 notifyDataSetChanged();
             } else {
                 //重绘控件，还原到初始状态
@@ -127,5 +128,16 @@ public class AutoCompleteTextAdapter extends BaseAdapter implements Filterable {
             }
             return newList;
         }
+
     }
+
+//    //返回过滤数据是否为空
+//    public boolean isFilterDataEmpty(String input){
+//        if(null != input && !input.equals("")){
+//            if(filterList != null && filterList.size() == 0){
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 }

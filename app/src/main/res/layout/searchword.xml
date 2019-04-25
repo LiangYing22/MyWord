@@ -11,6 +11,13 @@
         android:background="#ffffffff"
         android:orientation="horizontal">
 
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/search_queryMode"
+            android:entries="@array/QueryMode"
+            android:background="@null"/>
+
         <AutoCompleteTextView
             android:id="@+id/search_input"
             android:completionThreshold="1"
@@ -26,6 +33,13 @@
             android:src="@drawable/deleteinput"
             android:layout_gravity="center_vertical"
             android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/search_searchText"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="搜索" />
 
     </LinearLayout>
 
@@ -92,8 +106,5 @@
             android:textSize="15sp"/>
 
     </RelativeLayout>
-
-
-
 
 </RelativeLayout>

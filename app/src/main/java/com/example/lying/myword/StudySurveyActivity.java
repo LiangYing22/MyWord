@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageView;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -14,14 +17,25 @@ import java.util.List;
 public class StudySurveyActivity extends AppCompatActivity {
 
     RecyclerView SurveyRecyclerView;
+    ImageView surveyBack ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_study_survey);
 
         //绑定控件
         SurveyRecyclerView = (RecyclerView)findViewById(R.id.studySurverRecyclerView);
+        surveyBack = (ImageView)findViewById(R.id.surveyBack);
+
+        //返回
+        surveyBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         //设置布局管理器
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

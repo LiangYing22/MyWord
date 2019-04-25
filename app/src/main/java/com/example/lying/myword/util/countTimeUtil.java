@@ -4,6 +4,8 @@ import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class countTimeUtil {
 
@@ -35,5 +37,15 @@ public class countTimeUtil {
             return time1.compareTo(time2);
         }
         return 0;
+    }
+
+    //判断字符串中是否含有中文
+    public static boolean isContainChinese(String str) {
+        Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
+        Matcher m = p.matcher(str);
+        if (m.find()) {
+            return true;
+        }
+        return false;
     }
 }

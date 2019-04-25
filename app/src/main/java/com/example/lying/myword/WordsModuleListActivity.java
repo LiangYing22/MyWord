@@ -11,8 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -25,6 +27,7 @@ public class WordsModuleListActivity extends AppCompatActivity {
 
     TextView activity_moduleTextName;
     ListView activity_moduleListName;
+    ImageView moduleBack;
     //数据库
     MyDBHelper mydatabasehelper;
     SQLiteDatabase mydatabase;
@@ -39,6 +42,7 @@ public class WordsModuleListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_words_module_list);
 
         //获取intent中的数据
@@ -47,6 +51,14 @@ public class WordsModuleListActivity extends AppCompatActivity {
         //bindView
         activity_moduleTextName = (TextView)findViewById(R.id.activity_moduleTextName);
         activity_moduleListName = (ListView) findViewById(R.id.activity_moduleListName);
+        //返回
+        moduleBack = (ImageView)findViewById(R.id.moduleBack);
+        moduleBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         //bindDB
         mydatabasehelper = new MyDBHelper(this);
         mydatabase = mydatabasehelper.getWritableDatabase();
