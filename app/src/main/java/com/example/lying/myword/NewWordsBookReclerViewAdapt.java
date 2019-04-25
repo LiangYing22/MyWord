@@ -1,5 +1,6 @@
 package com.example.lying.myword;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -191,12 +192,18 @@ public class NewWordsBookReclerViewAdapt extends RecyclerView.Adapter<NewWordsBo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(wordData.get(position).getIsItemSelect() == 0){
+                if(wordData.get(position).getIsItemSelect() == 0){  //显示未选中图标时
                     holder.itemNewWordIsSelect.setBackgroundResource(R.drawable.select);
                     wordData.get(position).setIsItemSelect(1);
-                }else if(wordData.get(position).getIsItemSelect() == 1){
+                }else if(wordData.get(position).getIsItemSelect() == 1){ //显示选中图标时
                     holder.itemNewWordIsSelect.setBackgroundResource(R.drawable.unselect);
                     wordData.get(position).setIsItemSelect(0);
+                }else if(wordData.get(position).getIsItemSelect() == -1){ //初始状态(显示读音图标)
+                    //弹出学习卡片(PopWindow)
+                    WordPresentationPop wordPresentationPop = new WordPresentationPop(context,
+                            wordData.get(position).getWordSpell(),wordData.get(position).getPhoneticSymbol(),
+                            wordData.get(position).getChineseMean());
+                    wordPresentationPop.show((Activity) context);
                 }
             }
         });

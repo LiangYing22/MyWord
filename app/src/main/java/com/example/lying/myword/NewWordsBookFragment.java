@@ -164,6 +164,8 @@ public class NewWordsBookFragment extends Fragment implements View.OnClickListen
                     InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
                 }else if(newWordSearch.getText().equals("取消")){
+                    //清空输入(若不清空数据显示出错。因为：不管输入框是否时gone状态，EditText的addTextChangedListener监听仍会执行)
+                    newWordsInput.setText("");
                     //恢复数据源
                     if(!temporarySaveData.isEmpty()){
                         adapter.setWordData(temporarySaveData);
