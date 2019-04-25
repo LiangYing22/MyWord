@@ -86,10 +86,11 @@
         <TextView
             android:id="@+id/search_chineseMean"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:padding="10dp"
             android:layout_below="@+id/search_word"
-            android:gravity="center"
+            android:gravity="left"
             android:text="你好！大家好！"/>
 
         <TextView

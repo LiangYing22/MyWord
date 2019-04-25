@@ -53,7 +53,9 @@ public class NetWord {
                 partsArray = new String[parts_num*2];
                 for(int i = 0;i < parts_num;i++){
                     partsArray[i*2] = parts.getJSONObject(i).getString("part");
-                    partsArray[i*2+1] = parts.getJSONObject(i).getString("means");
+                    String s = parts.getJSONObject(i).getString("means");
+                    partsArray[i*2+1] = s.substring(1,s.length()-1);
+//                    partsArray[i*2+1] = parts.getJSONObject(i).getJSONArray("means").toString();
                 }
             }else if(type.equals("0")){ //输入的是中文
                 word_name_CN = json.getString("word_name");
@@ -79,7 +81,10 @@ public class NetWord {
         return word_name;
     }
     public String getPh_am(){
-        return "/"+ph_am+"/";
+        if(ph_am != null && !ph_am.equals("")){
+            return "/"+ph_am+"/";
+        }
+        return ph_am;
     }
     public String getChineseMean(){
         return getString(partsArray,"1");
@@ -90,7 +95,10 @@ public class NetWord {
         return word_name_CN;
     }
     public String getPinYin(){
-        return "/"+word_symbol_CN+"/";
+        if(word_symbol_CN != null && !word_symbol_CN.equals("")){
+            return "/"+word_symbol_CN+"/";
+        }
+        return word_symbol_CN;
     }
     public String getEnglishMean(){
         return getString(partsArray_CN,"0");
@@ -103,12 +111,12 @@ public class NetWord {
         if(type.equals("1")){
             int count = array.length / 2;
             for(int i = 0;i < count;i++){
-                arrayString = arrayString + array[i*2]+ array[i*2+1]+"\n";
+                arrayString = arrayString + "△" + array[i*2] + " " + array[i*2+1]+"\n";
             }
         }else if(type.equals("0")){
             int count = array.length;
             for(int i = 0;i < count;i++){
-                arrayString = arrayString + array[i]+"\n";
+                arrayString = arrayString + "△" + array[i]+"\n";
             }
         }
         return arrayString;
