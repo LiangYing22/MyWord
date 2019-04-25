@@ -83,6 +83,8 @@ public class NewWordsBookFragment extends Fragment implements View.OnClickListen
         //给RecycleView设置设配器
         adapter = new NewWordsBookReclerViewAdapt(context);
         newWordRecyclerView.setAdapter(adapter);
+        //保存数据源
+        temporarySaveData = adapter.getWordData();
 
         //如果没有生词 则 显示提示文本
         if(adapter.getWordData().size() == 0){
@@ -150,8 +152,6 @@ public class NewWordsBookFragment extends Fragment implements View.OnClickListen
                 break;
             case R.id.newWordSearch://搜索
                 if(newWordSearch.getText().equals("搜索")){
-                    //保存数据源
-                    temporarySaveData = adapter.getWordData();
                     setVisibleToGone();
                     newWordsInput.setVisibility(View.VISIBLE);
                     newWordSearch.setVisibility(View.VISIBLE);
@@ -242,5 +242,11 @@ public class NewWordsBookFragment extends Fragment implements View.OnClickListen
                 adapter.notifyDataSetChanged();
             }
         }
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        newWordsInput.setText("");
     }
 }
