@@ -4,6 +4,7 @@ package com.example.lying.myword;
 import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -18,11 +19,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewWordsBookFragment extends Fragment implements View.OnClickListener{
+public class NewWordsBookFragment extends Fragment implements View.OnClickListener,TextToSpeech.OnInitListener {
 
     //Context 对象
     Context context;
@@ -43,6 +45,9 @@ public class NewWordsBookFragment extends Fragment implements View.OnClickListen
     //RecyclerView 的设配器
     NewWordsBookReclerViewAdapt adapter;
 
+    //定义tts
+    TextToSpeech speak = null;
+
     public NewWordsBookFragment() {
         // Required empty public constructor
     }
@@ -51,6 +56,8 @@ public class NewWordsBookFragment extends Fragment implements View.OnClickListen
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         context = getContext();
+        //new只是，系统会调用tts的初始化函数onInit()。所有要复写onInit()方法
+        speak = new TextToSpeech(context,  this);
     }
 
 
@@ -81,7 +88,7 @@ public class NewWordsBookFragment extends Fragment implements View.OnClickListen
         //给RecyclerView设置布局管理器
         newWordRecyclerView.setLayoutManager(layoutManager);
         //给RecycleView设置设配器
-        adapter = new NewWordsBookReclerViewAdapt(context);
+        adapter = new NewWordsBookReclerViewAdapt(context,speak);
         newWordRecyclerView.setAdapter(adapter);
         //保存数据源
         temporarySaveData = adapter.getWordData();
@@ -248,5 +255,18 @@ public class NewWordsBookFragment extends Fragment implements View.OnClickListen
     public void onStop(){
         super.onStop();
         newWordsInput.setText("");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (speak != null)
+            speak.shutdown();//关闭tts引擎
+    }
+
+    @Override
+    public void onInit(int status) {
+        // 初始化TTS组件，设置语言为US英语
+        speak.setLanguage(Locale.US);
     }
 }

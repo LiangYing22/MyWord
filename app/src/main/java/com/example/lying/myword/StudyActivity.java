@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,8 +20,9 @@ import com.example.lying.myword.util.countTimeUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
-public class StudyActivity extends AppCompatActivity implements View.OnClickListener{
+public class StudyActivity extends AppCompatActivity implements View.OnClickListener ,TextToSpeech.OnInitListener {
 
     //传过来的数据（模块名和指针位置）
     String ModuleName ="";
@@ -58,6 +60,9 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
 
     //控件(上一个、加入生词本、下一个)
     TextView previousWord,StudyJoinNewWords,nextWord;
+
+    //定义tts
+    TextToSpeech speak = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +111,8 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
     private void initData(){
         //若传过来的ModuleName不为空，则初始化
         if(!"".equals(ModuleName) && null != ModuleName){
+            //初始化TextToSpeech
+            speak = new TextToSpeech(this,  this);
             titleText = "'"+ModuleName+"'"+"模块学习";
             file_read_write = new File_read_write(this,ModuleName+".txt");
             try {
@@ -374,6 +381,9 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
                 }
                 cursor_newwords.close();
                 break;
+            case R.id.StudySpeak:
+                speak.speak(wordText,TextToSpeech.QUEUE_ADD,null);
+                break;
             default:
                 break;
         }
@@ -384,6 +394,9 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
         super.onDestroy();
         mydatabase.close();
         mydatabasehelper.close();
+        //关闭tts引擎
+        if (speak != null)
+            speak.shutdown();
     }
 
     //根据文件名判断 data目录 下 files目录 中 文件 是否存在
@@ -429,4 +442,8 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
         nextWord.setVisibility(View.INVISIBLE);
     }
 
+    @Override
+    public void onInit(int status) {
+        speak.setLanguage(Locale.US);// 初始化TTS组件，设置语言为US英语
+    }
 }

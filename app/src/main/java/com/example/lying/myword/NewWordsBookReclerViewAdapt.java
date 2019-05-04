@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +39,8 @@ public class NewWordsBookReclerViewAdapt extends RecyclerView.Adapter<NewWordsBo
     //数据库对象
     MyDBHelper mydatabasehelper;
     SQLiteDatabase mydatabase;
+    //定义tts
+    TextToSpeech speak = null;
 
     //数据源
     List<Word> wordData = new ArrayList<Word>();
@@ -47,10 +50,11 @@ public class NewWordsBookReclerViewAdapt extends RecyclerView.Adapter<NewWordsBo
     int isSelect = 0;
 
     //构造函数
-    public NewWordsBookReclerViewAdapt(Context context){
+    public NewWordsBookReclerViewAdapt(Context context,TextToSpeech speak){
         this.context = context;
         mydatabasehelper=new MyDBHelper(context);
         mydatabase=mydatabasehelper.getWritableDatabase();
+        this.speak = speak;
         initData();
     }
 
@@ -202,7 +206,7 @@ public class NewWordsBookReclerViewAdapt extends RecyclerView.Adapter<NewWordsBo
                     //弹出学习卡片(PopWindow)
                     WordPresentationPop wordPresentationPop = new WordPresentationPop(context,
                             wordData.get(position).getWordSpell(),wordData.get(position).getPhoneticSymbol(),
-                            wordData.get(position).getChineseMean());
+                            wordData.get(position).getChineseMean(),speak);
                     wordPresentationPop.show((Activity) context);
                 }
             }
