@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lying.myword.util.CreateModuleTxtUtil;
@@ -56,7 +58,8 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
     TextView StudyTitle,StudyWord,StudyWordPhoneticSymbol,StudyChineseMean;
 
     //控件(朗读、已掌握、认识、不认识)
-    TextView StudySpeak,StudyMaster,StudyKnow,StudyUnKnow;
+    ImageView StudySpeak;
+    TextView StudyMaster,StudyKnow,StudyUnKnow;
 
     //控件(上一个、加入生词本、下一个)
     TextView previousWord,StudyJoinNewWords,nextWord;
@@ -92,7 +95,9 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
         StudyKnow = (TextView)findViewById(R.id.StudyKnow); //认识
         StudyUnKnow = (TextView)findViewById(R.id.StudyUnKnow); //不认识
         StudyJoinNewWords = (TextView)findViewById(R.id.StudyJoinNewWords);//加入生词本
-        StudySpeak = (TextView)findViewById(R.id.StudySpeak);//朗读
+        StudySpeak = (ImageView)findViewById(R.id.StudySpeak);//朗读
+        //设置读音ImageView的图片源
+        StudySpeak.setBackgroundResource(R.drawable.speaking);
 
         //设置数据
         setData();
@@ -382,6 +387,10 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
                 cursor_newwords.close();
                 break;
             case R.id.StudySpeak:
+                //初始朗读帧动画对象
+                AnimationDrawable rocketAnimation = (AnimationDrawable) StudySpeak.getBackground();
+                AnimationDrawable rocketAnimation1 = (AnimationDrawable) StudySpeak.getBackground();
+                rocketAnimation.start();
                 speak.speak(wordText,TextToSpeech.QUEUE_ADD,null);
                 break;
             default:

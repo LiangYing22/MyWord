@@ -1,6 +1,7 @@
 package com.example.lying.myword;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -274,7 +275,7 @@ public class HomeFragment extends Fragment {
                     intent1.putExtra("StudyPosition",StudyPosition);
                     startActivity(intent1);
                     break;
-                case R.id.home_ReviewWords://测试单词
+                case R.id.home_ReviewWords://复习单词
                     //查询学习计划表,获取当前需要复习的模块名
                     String currentReviewModuleName = "";
                     //先查询 学习状态为0(正在学习)且复习状态为0(正在复习)的模块
@@ -326,16 +327,29 @@ public class HomeFragment extends Fragment {
                     //最后查询 学习状态为1(完成学习)且复习状态为-1(未复习)的模块
                     if(null == currentReviewModuleName || currentReviewModuleName.equals("") || !isFileExist(currentReviewModuleName,2)){
                         Cursor cursor_studytable1_1 = mydatabase.rawQuery("select LearningModule from "+MyDBHelper.Table_LearningPlan_NANE+
-                                " where LearningState=? and ReviewingState=? limit 1",new String[]{"1","-1"});
-                        if(cursor_studytable1_1.getCount() == 1){
+                                " where LearningState=? and ReviewingState=? ",new String[]{"1","-1"});
+                        if(cursor_studytable1_1.getCount() >= 1){
                             while(cursor_studytable1_1.moveToNext()){
                                 currentReviewModuleName = cursor_studytable1_1.getString(0);
+                                //先删除文件（查找到了就删除）
+                                deleteFile(currentReviewModuleName,2);
+                                //重新创建文件
+                                CreateModuleTxtUtil createModuleTxtUtil = new CreateModuleTxtUtil(getContext());
+                                createModuleTxtUtil.createReviewTxtOfModuleName(currentReviewModuleName);
+                                //判断创建了复习文件没有。若有则退出循环。若没有则修改学习表中的复习状态（没有则表示该学习txt中没有需要复习的单词，全是已掌握）。
+                                if(isFileExist(currentReviewModuleName,2)){
+                                    break;
+                                }else{
+                                    ContentValues contentValues = new ContentValues();
+                                    contentValues.put("ReviewingState",1);
+                                    mydatabase.update(MyDBHelper.Table_LearningPlan_NANE,contentValues,"LearningModule=?",new String[]{currentReviewModuleName});
+                                }
                             }
-                            //先删除文件（查找到了就删除）
-                            deleteFile(currentReviewModuleName,2);
-                            //重新创建文件
-                            CreateModuleTxtUtil createModuleTxtUtil = new CreateModuleTxtUtil(getContext());
-                            createModuleTxtUtil.createReviewTxtOfModuleName(currentReviewModuleName);
+//                            //先删除文件（查找到了就删除）
+//                            deleteFile(currentReviewModuleName,2);
+//                            //重新创建文件
+//                            CreateModuleTxtUtil createModuleTxtUtil = new CreateModuleTxtUtil(getContext());
+//                            createModuleTxtUtil.createReviewTxtOfModuleName(currentReviewModuleName);
                         }
                         cursor_studytable1_1.close();
                     }
