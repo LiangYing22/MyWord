@@ -8,17 +8,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="15dp"
         android:text="模块复习"
-        android:textSize="25dp"
-        android:background="#74f6f7d4"/>
+        android:textSize="30dp"
+        android:padding="10dp"/>
+
+    <View
+        android:id="@+id/ReviewBelowTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#b1b1b1"
+        android:layout_below="@id/ReviewTitle"/>
 
     <RelativeLayout
         android:id="@+id/ReviewWordMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/ReviewTitle">
+        android:layout_below="@id/ReviewBelowTitleView">
 
         <TextView
             android:id="@+id/ReviewWord"
@@ -26,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="abandon"
             android:layout_margin="30dp"
-            android:textColor="#fb0b7e6e"
+            android:textColor="#3399FF"
             android:textSize="20dp"/>
 
         <TextView
@@ -57,9 +63,10 @@
             android:text="A选项"
             android:gravity="center"
             android:layout_margin="15dp"
-            android:padding="15dp"
-            android:textSize="17dp"
-            android:background="#b7f6d5f6"/>
+            android:padding="17dp"
+            android:textSize="20sp"
+            android:background="@drawable/study_unknow_bg"
+            android:textColor="#509D9F"/>
         <TextView
             android:id="@+id/BOption"
             android:layout_width="match_parent"
@@ -68,9 +75,10 @@
             android:gravity="center"
             android:layout_below="@id/AOption"
             android:layout_margin="15dp"
-            android:padding="15dp"
-            android:textSize="17dp"
-            android:background="#b7f6d5f6"/>
+            android:padding="17dp"
+            android:textSize="20sp"
+            android:background="@drawable/study_unknow_bg"
+            android:textColor="#509D9F"/>
         <TextView
             android:id="@+id/COption"
             android:layout_width="match_parent"
@@ -79,9 +87,10 @@
             android:gravity="center"
             android:layout_below="@id/BOption"
             android:layout_margin="15dp"
-            android:padding="15dp"
-            android:textSize="17dp"
-            android:background="#b7f6d5f6"/>
+            android:padding="17dp"
+            android:textSize="20sp"
+            android:background="@drawable/study_unknow_bg"
+            android:textColor="#509D9F"/>
         <TextView
             android:id="@+id/DOption"
             android:layout_width="match_parent"
@@ -90,9 +99,10 @@
             android:gravity="center"
             android:layout_below="@id/COption"
             android:layout_margin="15dp"
-            android:padding="15dp"
-            android:textSize="17dp"
-            android:background="#b7f6d5f6"/>
+            android:padding="17dp"
+            android:textSize="20sp"
+            android:background="@drawable/study_unknow_bg"
+            android:textColor="#509D9F"/>
         <TextView
             android:id="@+id/ReviewPrevious"
             android:layout_width="wrap_content"
@@ -102,7 +112,10 @@
             android:gravity="center"
             android:layout_below="@id/DOption"
             android:layout_margin="15dp"
-            android:textSize="17dp"/>
+            android:background="@drawable/study_add_bg"
+            android:textColor="#D1B7E1"
+            android:textSize="18sp"
+            android:padding="10dp"/>
         <TextView
             android:id="@+id/ReviewNext"
             android:layout_width="wrap_content"
@@ -112,7 +125,10 @@
             android:gravity="center"
             android:layout_below="@id/DOption"
             android:layout_margin="15dp"
-            android:textSize="17dp"/>
+            android:background="@drawable/study_add_bg"
+            android:textColor="#D1B7E1"
+            android:textSize="18sp"
+            android:padding="10dp"/>
         
     </RelativeLayout>
 

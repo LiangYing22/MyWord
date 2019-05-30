@@ -12,152 +12,146 @@
         android:gravity="center"
         android:layout_marginTop="15dp"
         android:text="选择模块学习"
-        android:textSize="25dp"
-        android:background="#74f6f7d4"/>
+        android:textSize="30dp"/>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="15dp"/>
+        android:layout_height="1dp"
+        android:background="#b1b1b1"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="#74f6f7d4">
+        android:gravity="center">
 
         <TextView
             android:id="@+id/StudyWord"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="2.5"
             android:gravity="center"
-            android:text="hello"/>
+            android:text="hello"
+            android:textColor="#3399FF"
+            android:layout_marginRight="23dp"
+            android:textSize="25dp"/>
 
         <TextView
             android:id="@+id/StudyWordPhoneticSymbol"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="4.5"
             android:gravity="center"
-            android:text="/oioh/"/>
+            android:text="/oioh/"
+            android:layout_marginRight="15dp"
+            android:textSize="18sp"/>
 
         <ImageView
             android:id="@+id/StudySpeak"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.8"/>
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/speaking"/>
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="30dp"/>
 
     <TextView
         android:id="@+id/StudyChineseMean"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:text="你好，愉快。"
         android:gravity="center"
-        android:background="#6edcf7f4"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"
+        android:textSize="18sp"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="30dp"/>
-    
+    <TextView
+        android:id="@+id/StudyJoinNewWords"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="加入生词本"
+        android:textColor="#D1B7E1"
+        android:textStyle="bold"
+        android:background="@drawable/study_add_bg"
+        android:layout_gravity="center"
+        android:layout_marginBottom="25dp"/>
+
+    <TextView
+        android:id="@+id/StudyMaster"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:textSize="20sp"
+        android:textColor="#9DC9C9"
+        android:gravity="center"
+        android:text="已掌握"
+        android:textStyle="bold"
+        android:background="@drawable/stdudy_master_bg"
+        android:layout_marginBottom="25dp"/>
+
+    <TextView
+        android:id="@+id/StudyKnow"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="认识"
+        android:textStyle="bold"
+        android:textColor="#D1B7E1"
+        android:background="@drawable/study_add_bg"
+        android:layout_marginBottom="25dp"/>
+
+    <TextView
+        android:id="@+id/StudyUnKnow"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="不认识"
+        android:textStyle="bold"
+        android:textColor="#509D9F"
+        android:background="@drawable/study_unknow_bg"
+        android:layout_marginBottom="25dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:background="#6edcf7f4">
-
+        android:layout_height="60dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/StudyMaster"
-            android:layout_gravity="center"
+            android:id="@+id/previousWord"
             android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_height="match_parent"
+            android:text="上一个"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
             android:gravity="center"
-            android:text="已掌握"
-            android:background="#8e7ccafa"/>
+            android:background="@drawable/study_add_bg"
+            android:textColor="#D1B7E1"
+            android:textSize="18sp"/>
 
         <View
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/StudyKnow"
-                android:layout_marginLeft="50dp"
-                android:layout_gravity="left"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:gravity="center"
-                android:text="认识"
-                android:background="#cef4f5"/>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:id="@+id/StudyUnKnow"
-                android:layout_marginRight="50dp"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:gravity="center"
-                android:text="不认识"
-                android:background="#fbbfda"/>
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/previousWord"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:text="上一个"
-                android:gravity="center"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"/>
-            <TextView
-                android:id="@+id/StudyJoinNewWords"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:gravity="center"
-                android:text="加入生词本"
-                android:background="#c9fa97"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"/>
-            <TextView
-                android:id="@+id/nextWord"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:text="下一个"
-                android:gravity="center"/>
-        </LinearLayout>
+        <TextView
+            android:id="@+id/nextWord"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:text="下一个"
+            android:textStyle="bold"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:layout_gravity="right"
+            android:background="@drawable/study_add_bg"
+            android:textColor="#D1B7E1"
+            android:textSize="18sp"/>
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="30dp"/>
 
 </LinearLayout>

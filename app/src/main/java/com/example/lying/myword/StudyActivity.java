@@ -13,12 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lying.myword.util.CreateModuleTxtUtil;
 import com.example.lying.myword.util.File_read_write;
 import com.example.lying.myword.util.countTimeUtil;
+import com.example.lying.myword.util.getAssetsFileUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,6 +72,7 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_study);
 
         //初始化数据库对象
@@ -197,6 +200,7 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
         }
         //显示的数据
         StudyTitle.setText(titleText);
+        StudyTitle.setTypeface(getAssetsFileUtil.getAssetsTtfFile(this,"studytitle"));
         StudyWord.setText(wordText);
         StudyChineseMean.setText(wordChineseMean);
         StudyWordPhoneticSymbol.setText(wordPhoneticSymbol);
@@ -206,23 +210,23 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
             setOriginalText();
         }else if(familiarityText.equals("3")){
             setStyleAfterClick();
-            StudyMaster.setBackgroundColor(Color.argb(110,247,241,215));
+            StudyMaster.setBackgroundResource(R.drawable.stdudy_master_bg2);
         }else if(familiarityText.equals("2")){
             setStyleAfterClick();
-            StudyKnow.setBackgroundColor(Color.argb(110,247,241,215));
+            StudyKnow.setBackgroundResource(R.drawable.study_add_bg2);
         }else if(familiarityText.equals("1")){
             setStyleAfterClick();
-            StudyUnKnow.setBackgroundColor(Color.argb(110,247,241,215));
+            StudyUnKnow.setBackgroundResource(R.drawable.study_unknow_bg2);
         }
         //控制“加入生词本”的可点击性和颜色（通过判断单词是否在生词表中）
         Cursor cursor_newWordsBook = mydatabase.rawQuery("select * from "+MyDBHelper.Table_NewWordsBook_NAME+" where NewWordSpelling=?",new String[]{wordText});
         if(cursor_newWordsBook.getCount() == 0){
             //初始状态
-            StudyJoinNewWords.setBackgroundColor(Color.argb(255,201,250,151));
+            StudyJoinNewWords.setBackgroundResource(R.drawable.study_add_bg);
             StudyJoinNewWords.setText("加入生词本");
             StudyJoinNewWords.setEnabled(true);
         }else if(cursor_newWordsBook.getCount() > 0){
-            StudyJoinNewWords.setBackgroundColor(Color.argb(100,201,250,151));
+            StudyJoinNewWords.setBackgroundResource(R.drawable.study_add_bg2);
             StudyJoinNewWords.setText("已添加生词");
             StudyJoinNewWords.setEnabled(false);
         }
@@ -331,7 +335,7 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
                     //更新学习表对应的行中学习状态为学习中，并更新指针位置
                     CreateModuleTxtUtil createModuleTxtUtil = new CreateModuleTxtUtil(this);
                     createModuleTxtUtil.updateStudyTable(ModuleName,StudyPosition);
-                    if(null == file_read_write) file_read_write = new File_read_write(this,ModuleName+".txt");;
+                    if(null == file_read_write) file_read_write = new File_read_write(this,ModuleName+".txt");
                     String content = file_read_write.getDataFromLineNum(StudyPosition);
                     if(!"".equals(content) && null != content && content.contains("*")){
                         String[] contentArray = content.split("\\*");
@@ -350,24 +354,24 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
             case R.id.StudyMaster://已掌握
                 //点击"已掌握","认识","不认识"三个按钮时 背景改变 设置不可点击
                 setStyleAfterClick();
-                StudyMaster.setBackgroundColor(Color.argb(110,247,241,215));
+                StudyMaster.setBackgroundResource(R.drawable.stdudy_master_bg2);
                 if(null == file_read_write) file_read_write = new File_read_write(this,ModuleName+".txt");;
                 file_read_write.setDataFromLineNum(StudyPosition,"3","0", countTimeUtil.getCurrentTime());
                 break;
             case R.id.StudyKnow://认识
                 setStyleAfterClick();
-                StudyKnow.setBackgroundColor(Color.argb(110,247,241,215));
+                StudyKnow.setBackgroundResource(R.drawable.study_add_bg2);
                 if(null == file_read_write) file_read_write = new File_read_write(this,ModuleName+".txt");;
                 file_read_write.setDataFromLineNum(StudyPosition,"2","2",countTimeUtil.getCurrentTime());
                 break;
             case R.id.StudyUnKnow://不认识
                 setStyleAfterClick();
-                StudyUnKnow.setBackgroundColor(Color.argb(110,247,241,215));
+                StudyUnKnow.setBackgroundResource(R.drawable.study_unknow_bg2);
                 if(null == file_read_write) file_read_write = new File_read_write(this,ModuleName+".txt");;
                 file_read_write.setDataFromLineNum(StudyPosition,"1","3",countTimeUtil.getCurrentTime());
                 break;
             case R.id.StudyJoinNewWords://加入生词本
-                StudyJoinNewWords.setBackgroundColor(Color.argb(100,201,250,151));
+                StudyJoinNewWords.setBackgroundResource(R.drawable.study_add_bg2);
                 StudyJoinNewWords.setText("已添加生词");
                 StudyJoinNewWords.setEnabled(false);
 //                //1.改变txt文件的标志位(先改成复习状态)
@@ -426,9 +430,9 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
     //当"已掌握","认识","不认识"三个按钮被点击时 背景改变 设置不可点击
     private void setStyleAfterClick(){
         //设置 三个按钮的 背景颜色
-        StudyMaster.setBackgroundColor(Color.argb(128,153,154,152));
-        StudyKnow.setBackgroundColor(Color.argb(128,153,154,152));
-        StudyUnKnow.setBackgroundColor(Color.argb(128,153,154,152));
+        StudyMaster.setBackgroundResource(R.drawable.stdudy_master_bg);
+        StudyKnow.setBackgroundResource(R.drawable.study_add_bg);
+        StudyUnKnow.setBackgroundResource(R.drawable.study_unknow_bg);
         //设置 三个按钮为不可点击
         StudyMaster.setEnabled(false);
         StudyKnow.setEnabled(false);
@@ -440,9 +444,9 @@ public class StudyActivity extends AppCompatActivity implements View.OnClickList
     //"已掌握","认识","不认识"三个按钮初始的状态
     private void setOriginalText(){
         //设置 三个按钮的 背景颜色
-        StudyMaster.setBackgroundColor(Color.argb(142,124,202,250));
-        StudyKnow.setBackgroundColor(Color.argb(255,206,244,245));
-        StudyUnKnow.setBackgroundColor(Color.argb(255,251,191,218));
+        StudyMaster.setBackgroundResource(R.drawable.stdudy_master_bg);
+        StudyKnow.setBackgroundResource(R.drawable.study_add_bg);
+        StudyUnKnow.setBackgroundResource(R.drawable.study_unknow_bg);
         //设置 三个按钮为不可点击
         StudyMaster.setEnabled(true);
         StudyKnow.setEnabled(true);

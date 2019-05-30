@@ -25,7 +25,7 @@ public class DisturbOptionsUtil {
     public DisturbOptionsUtil(Context context){
         this.context = context;
         //先构造至少需要的三个不同的，以防词库中没有数据（至少不是两个，应为怕重复一个）
-        optionsList.add("ad.完全的；绝对的");
+        optionsList.add("vt.忍耐，容忍，忍受");
         optionsList.add("ad.几乎，差不多");
         optionsList.add("n.参观，访问");
         //初始化数据库

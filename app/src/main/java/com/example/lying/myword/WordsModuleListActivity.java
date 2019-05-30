@@ -125,7 +125,7 @@ public class WordsModuleListActivity extends AppCompatActivity {
                 if(ModuleName != null){
                     Log.i("模块界面", Arrays.toString(ModuleName));
                     Log.i("模块界面", ""+i);
-                    String str="<font color='#FFD0F5F5'>模块:</font><font color='#7BCDE1F0'>"+ModuleName[i]+"</font>";
+                    String str="<font color='#FFD0F5F5'>模块:</font><font color='#9dc9c9'>"+ModuleName[i]+"</font>";
                     viewHolder.WordsModuleName.setText(Html.fromHtml(str));
                     viewHolder.WordsNum.setText("单词数量:"+ModuleWordsNum[i]);
                 }

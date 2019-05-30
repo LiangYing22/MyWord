@@ -1,22 +1,21 @@
 package com.example.lying.myword;
 
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.example.lying.myword.util.CreateModuleTxtUtil;
 import com.example.lying.myword.util.DisturbOptionsUtil;
 import com.example.lying.myword.util.File_read_write;
 import com.example.lying.myword.util.countTimeUtil;
+import com.example.lying.myword.util.getAssetsFileUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -76,6 +75,7 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_review);
 
         //绑定控件
@@ -142,7 +142,8 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
             //根据文件生成List
             for(int i = 0;i<maxPosition;i++){
                 String content = file_read_write.getDataFromLineNum(i+1);
-                if(null != content && content.contains("*") && content.split("\\*").length == 6){
+                if(null != content && content.contains("*") && content.split("\\*").length == 6
+                        && !content.split("\\*")[4].equals("0")){
                     ReviewWordData.add(getWordFromString(content));
                 }
             }
@@ -180,20 +181,24 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     private void setData(){
         OriginalOptionStyle();
         ReviewTitle.setText(TitelText);
+        ReviewTitle.setTypeface(getAssetsFileUtil.getAssetsTtfFile(this,"studytitle"));
         ReviewWord.setText(wordText);
         ReviewPhoneticSymbol.setText(phoneticSymbolText);
         if(num == 1){
+            String[] option = disturbOptionsUtil.getDisturbOption(chineseMeanText);
             AOption.setText(chineseMeanText);
-            BOption.setText(disturbOptionsUtil.getDisturbOption(chineseMeanText)[0]);
-            COption.setText(disturbOptionsUtil.getDisturbOption(chineseMeanText)[1]);
+            BOption.setText(option[0]);
+            COption.setText(option[1]);
         }else if(num == 2){
+            String[] option = disturbOptionsUtil.getDisturbOption(chineseMeanText);
             BOption.setText(chineseMeanText);
-            AOption.setText(disturbOptionsUtil.getDisturbOption(chineseMeanText)[0]);
-            COption.setText(disturbOptionsUtil.getDisturbOption(chineseMeanText)[1]);
+            AOption.setText(option[0]);
+            COption.setText(option[1]);
         }else if(num == 3){
+            String[] option = disturbOptionsUtil.getDisturbOption(chineseMeanText);
             COption.setText(chineseMeanText);
-            AOption.setText(disturbOptionsUtil.getDisturbOption(chineseMeanText)[0]);
-            BOption.setText(disturbOptionsUtil.getDisturbOption(chineseMeanText)[1]);
+            AOption.setText(option[0]);
+            BOption.setText(option[1]);
         }
     }
 
@@ -218,7 +223,8 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.ReviewNext://下一个
-                if(position < maxPosition-1){
+//                if(position < maxPosition-1){
+                if(position < ReviewWordData.size()-1){
                     //保存当前位置，当指针在while循环中变得比maxPosition-1大时回滚
                     int reviewPosition = position;
                     position++;
@@ -226,15 +232,18 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
                     while(ReviewWordData.get(position).getNeedReviewTime().equals("0")){
                         position++;
                         //若跳过需复习次数为0的数据后，指针大于或等于maxPosition需要跳出，因为ReviewWordData.get(position)中的position超出范围，抛出异常
-                        if(position >= maxPosition){
+//                        if(position >= maxPosition){
+                        if(position >= ReviewWordData.size()){
                             break;
                         }
                     }
                     //若position没超出范围时退出循环，则表示后面有数据，正常运行。
-                    if(position <= maxPosition-1){
+//                    if(position <= maxPosition-1){
+                    if(position <= ReviewWordData.size()-1){
                         flashData();
                         setData();
-                    }else if(position > maxPosition-1){//若超出范围退出，两种可能。1：复习完成(从第一个需复习次数为0就开始跳过，且后面都为0)。2：前面不为0后面都为0
+//                    }else if(position > maxPosition-1){//若超出范围退出，两种可能。1：复习完成(从第一个需复习次数为0就开始跳过，且后面都为0)。2：前面不为0后面都为0
+                    }else if(position > ReviewWordData.size()-1){//若超出范围退出，两种可能。1：复习完成(从第一个需复习次数为0就开始跳过，且后面都为0)。2：前面不为0后面都为0
                         //要判断ReviewWordData中的数据是否又要复习的
                         int hasNeedReviewNum = 0;
                         for(int i = 0;i<ReviewWordData.size();i++){
@@ -279,7 +288,8 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
                             }
                         }
                     }
-                }else if(position == maxPosition-1){
+//                }else if(position == maxPosition-1){
+                }else if(position == ReviewWordData.size()-1){
                     //要判断ReviewWordData中的数据是否有要复习的
                     int hasNeedReviewNum = 0;
                     for(int i = 0;i<ReviewWordData.size();i++){
@@ -383,20 +393,20 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
     //选项点击后
     private void changeOptionStyle(){
         if(AOption.getText().equals(chineseMeanText)){
-            AOption.setBackgroundColor(Color.argb(183,128,250,160));
-            BOption.setBackgroundColor(Color.argb(183,250,128,164));
-            COption.setBackgroundColor(Color.argb(183,250,128,164));
-            DOption.setBackgroundColor(Color.argb(183,250,128,164));
+            AOption.setBackgroundResource(R.drawable.study_unknow_bgt);
+            BOption.setBackgroundResource(R.drawable.study_unknow_bgf);
+            COption.setBackgroundResource(R.drawable.study_unknow_bgf);
+            DOption.setBackgroundResource(R.drawable.study_unknow_bgf);
         }else if(BOption.getText().equals(chineseMeanText)){
-            BOption.setBackgroundColor(Color.argb(183,128,250,160));
-            AOption.setBackgroundColor(Color.argb(183,250,128,164));
-            COption.setBackgroundColor(Color.argb(183,250,128,164));
-            DOption.setBackgroundColor(Color.argb(183,250,128,164));
+            BOption.setBackgroundResource(R.drawable.study_unknow_bgt);
+            AOption.setBackgroundResource(R.drawable.study_unknow_bgf);
+            COption.setBackgroundResource(R.drawable.study_unknow_bgf);
+            DOption.setBackgroundResource(R.drawable.study_unknow_bgf);
         }else if(COption.getText().equals(chineseMeanText)){
-            COption.setBackgroundColor(Color.argb(183,128,250,160));
-            AOption.setBackgroundColor(Color.argb(183,250,128,164));
-            BOption.setBackgroundColor(Color.argb(183,250,128,164));
-            DOption.setBackgroundColor(Color.argb(183,250,128,164));
+            COption.setBackgroundResource(R.drawable.study_unknow_bgt);
+            AOption.setBackgroundResource(R.drawable.study_unknow_bgf);
+            BOption.setBackgroundResource(R.drawable.study_unknow_bgf);
+            DOption.setBackgroundResource(R.drawable.study_unknow_bgf);
         }
         AOption.setEnabled(false);
         BOption.setEnabled(false);
@@ -408,10 +418,10 @@ public class ReviewActivity extends AppCompatActivity implements View.OnClickLis
         AOption.setText("A选项");
         BOption.setText("B选项");
         COption.setText("C选项");
-        AOption.setBackgroundColor(Color.argb(183,246,213,246));
-        BOption.setBackgroundColor(Color.argb(183,246,213,246));
-        COption.setBackgroundColor(Color.argb(183,246,213,246));
-        DOption.setBackgroundColor(Color.argb(183,246,213,246));
+        AOption.setBackgroundResource(R.drawable.study_unknow_bg);
+        BOption.setBackgroundResource(R.drawable.study_unknow_bg);
+        COption.setBackgroundResource(R.drawable.study_unknow_bg);
+        DOption.setBackgroundResource(R.drawable.study_unknow_bg);
         AOption.setEnabled(true);
         BOption.setEnabled(true);
         COption.setEnabled(true);
